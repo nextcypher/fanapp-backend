@@ -12,9 +12,10 @@ import {
 import { CreateAddressDto } from 'src/dto/create-address.dto';
 import { UpdateAddressDto } from 'src/dto/update-address.dto';
 import { AddressService } from 'src/service/address.service';
+
 @Controller('address')
 export class AddressController {
-  constructor(private readonly addressService: AddressService) {}
+  constructor(private readonly addressService: AddressService) { }
   @Post()
   async createAddress(
     @Res() response,
@@ -40,9 +41,10 @@ export class AddressController {
   async getDatabyWallet(@Res() response, @Param('wallet') wallet: string) {
     try {
       const targetAddress = await this.addressService.getDatabyWallet(wallet);
+      console.log('target', targetAddress)
       return response.status(HttpStatus.CREATED).json({
         message: 'Address has been created successfully',
-        targetAddress,
+        data: targetAddress,
       });
     } catch (err) {
       return response.status(HttpStatus.BAD_REQUEST).json({
@@ -78,30 +80,6 @@ export class AddressController {
       return response.status(HttpStatus.OK).json({
         message: 'All Addresss data found successfully',
         addressData,
-      });
-    } catch (err) {
-      return response.status(err.status).json(err.response);
-    }
-  }
-  @Get('/:id')
-  async getAddress(@Res() response, @Param('id') AddressId: string) {
-    try {
-      const existingAddress = await this.addressService.getAddress(AddressId);
-      return response.status(HttpStatus.OK).json({
-        message: 'Address found successfully',
-        existingAddress,
-      });
-    } catch (err) {
-      return response.status(err.status).json(err.response);
-    }
-  }
-  @Delete('/:id')
-  async deleteAddress(@Res() response, @Param('id') AddressId: string) {
-    try {
-      const deletedAddress = await this.addressService.deleteAddress(AddressId);
-      return response.status(HttpStatus.OK).json({
-        message: 'Address deleted successfully',
-        deletedAddress,
       });
     } catch (err) {
       return response.status(err.status).json(err.response);
