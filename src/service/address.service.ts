@@ -108,7 +108,7 @@ export class AddressService {
   }
   async getAllAddresss(): Promise<IAddress[]> {
     try {
-      const data = await s3.listObjectsV2({ Bucket: 'nxc-profiles' }).promise();
+      const data = await s3.listObjectsV2({ Bucket: 'nxc-profiles', Prefix: 'nft/' }).promise();
       let dataArray = [];
       const files = await Promise.all(
         data.Contents.map(async (file) => {
