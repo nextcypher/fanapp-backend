@@ -21,6 +21,7 @@ export class ValidateController {
   ) {
     try {
       const formatedAddress = await this.validateService.getFormatedAddress(createValidateDto)
+
       return response.status(HttpStatus.CREATED).json({
         message: 'Address has been created successfully',
         address: formatedAddress,

@@ -16,7 +16,6 @@ export class ValidateService {
                     regionCode: createValidateDto.regionCode,
                 }
             });
-
         formattedAddress = response.data.result.address;
         console.log(formattedAddress);
 

@@ -21,6 +21,8 @@ export class NftClaimService {
     shipAddress: string,
     signature: string,
     wallet: string,
+    nftIndex: string,
+    timestamp: string,
   ): boolean {
     const recovered = this.web3.eth.accounts.recover(shipAddress, signature);
     return recovered === wallet;
@@ -35,12 +37,13 @@ export class NftClaimService {
       "shipAddress": nftClaimDto.shipAddress,
       "nftIndex": nftClaimDto.nftIndex,
       "timestamp": nftClaimDto.timestamp
-
     };
     const isPassed = this.verifySignatureHash(
       "NFT index: " + nftClaimDto.nftIndex.toString() + "\n" + "Shipping Address: " + nftClaimDto.shipAddress + "\n" + "Date: " + nftClaimDto.timestamp,
       nftClaimDto.signature,
       nftClaimDto.wallet,
+      nftClaimDto.nftIndex,
+      nftClaimDto.timestamp,
     );
     if (isPassed) {
       console.log("are you passed");
