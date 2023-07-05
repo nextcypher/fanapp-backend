@@ -32,7 +32,9 @@ export class AddressService {
     const body = {
       "wallet": createAddressDto.wallet,
       "signature": createAddressDto.signature,
-      "shipAddress": createAddressDto.shipAddress
+      "shipAddress": createAddressDto.shipAddress,
+      "name": createAddressDto.name,
+      "phone": createAddressDto.phone
     };
     const isPassed = this.verifySignatureHash(
       createAddressDto.shipAddress,
@@ -91,7 +93,9 @@ export class AddressService {
       const body = {
         "wallet": updateAddressDto.wallet,
         "signature": updateAddressDto.signature,
-        "shipAddress": updateAddressDto.shipAddress
+        "shipAddress": updateAddressDto.shipAddress,
+        "name": updateAddressDto.name,
+        "phone": updateAddressDto.phone
       };
       var file = `${wallet.toLowerCase()}.json`;
       const updatedContent = JSON.stringify(body);

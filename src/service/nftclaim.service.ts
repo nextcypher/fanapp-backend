@@ -33,6 +33,8 @@ export class NftClaimService {
       "wallet": nftClaimDto.wallet,
       "signature": nftClaimDto.signature,
       "shipAddress": nftClaimDto.shipAddress,
+      "name": nftClaimDto.name,
+      "phone": nftClaimDto.phone,
       "nftIndex": nftClaimDto.nftIndex,
       "timestamp": nftClaimDto.timestamp
     };
