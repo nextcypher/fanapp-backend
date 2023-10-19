@@ -22,10 +22,8 @@ export class NftClaimDto {
   readonly shipAddress: string;
   @IsString()
   @MaxLength(200)
-  @IsNotEmpty()
   readonly name: string;
   @IsString()
   @MaxLength(200)
-  @IsNotEmpty()
   readonly phone: string;
 }
